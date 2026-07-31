@@ -1,0 +1,59 @@
+# === Visual Studio ===
+.vs/
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# === CMake (foldery budowania) ===
+build/
+out/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# === Qt (pliki generowane automatycznie) ===
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.qmlc
+*.jsc
+
+# === Wyniki kompilacji ===
+x64/
+x86/
+Win32/
+Debug/
+Release/
+*.ilk
+*.pdb
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.log
+*.tlog
+*.iobj
+*.ipdb
+*.idb
+*.lastbuildstate
+
+# === IntelliSense / indeksy ===
+*.ipch
+*.vsidx
+CopilotIndices/
+.cache/
+
+# === Pozostałe ===
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
