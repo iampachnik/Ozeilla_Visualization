@@ -57,3 +57,4 @@ CopilotIndices/
 *.bak
 Thumbs.db
 .DS_Store
+notes/

@@ -13,13 +13,8 @@ class MainWindow : public QWidget {
 public:
     explicit MainWindow(QWidget* parent = nullptr);
 
-private slots:
-    void onSetPosition();
-    void onResetPosition();
-
 private:
     void setupDataPanel();
-    // void updateStatusLabel();
 
     QWidget* dataPanel_ = nullptr;
     QWidget* visualizationPanel_ = nullptr;
@@ -28,10 +23,7 @@ private:
     QDoubleSpinBox* yInput_ = nullptr;
     QDoubleSpinBox* zInput_ = nullptr;
 
-    // QPushButton* setButton_ = nullptr;
     QPushButton* resetButton_ = nullptr;
-
-    // QLabel* statusLabel_ = nullptr;
 
     HomePosition::Position3D currentPosition_{};
 };

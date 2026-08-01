@@ -13,7 +13,9 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 add_executable(OzeillaVisualization
 	src/main.cpp
 	src/main_window.cpp
-	include/main_window.h
+	src/translation.cpp
+	include/main/main_window.h
+	include/main/translation.h
 	src/home_position.cpp
 	include/home_position/home_position.h
 )
