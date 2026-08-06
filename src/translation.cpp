@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include <QSignalBlocker>
 #include <QVBoxLayout>
 
 namespace {
@@ -95,6 +96,9 @@ void TranslationWidget::setupUi() {
     layout->addStretch(1);
 
     connect(resetButton_, &QPushButton::clicked, this, &TranslationWidget::onResetPosition);
+    connect(xInput_, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &TranslationWidget::onSetPosition);
+    connect(yInput_, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &TranslationWidget::onSetPosition);
+    connect(zInput_, QOverload<double>::of(&QDoubleSpinBox::valueChanged), this, &TranslationWidget::onSetPosition);
 }
 
 void TranslationWidget::onSetPosition() {
@@ -103,11 +107,18 @@ void TranslationWidget::onSetPosition() {
         yInput_->value(),
         zInput_->value()
     };
+    emit positionChanged(currentPosition_);
 }
 
 void TranslationWidget::onResetPosition() {
-    HomePosition::resetButtonToStart(currentPosition_);
+    currentPosition_ = HomePosition::START_POSITION;
+
+    const QSignalBlocker blockX(xInput_);
+    const QSignalBlocker blockY(yInput_);
+    const QSignalBlocker blockZ(zInput_);
     xInput_->setValue(currentPosition_.x);
     yInput_->setValue(currentPosition_.y);
     zInput_->setValue(currentPosition_.z);
+
+    emit positionChanged(currentPosition_);
 }

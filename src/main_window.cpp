@@ -1,5 +1,6 @@
 #include "main/main_window.h"
 #include "main/translation.h"
+#include "coordinate_system/coordinate_system.h"
 
 #include <QFrame>
 #include <QHBoxLayout>
@@ -10,9 +11,10 @@ MainWindow::MainWindow(QWidget* parent) : QWidget(parent) {
     showMaximized();
 
     dataPanel_ = new TranslationWidget();
+    visualizationPanel_ = new CoordinateSystemWidget();
 
-    visualizationPanel_ = new QWidget();
-    visualizationPanel_->setStyleSheet("background-color: #1e1e1e;");
+    connect(dataPanel_, &TranslationWidget::positionChanged,
+            visualizationPanel_, &CoordinateSystemWidget::setTranslatedPosition);
 
     auto* divider = new QFrame(this);
     divider->setFixedWidth(6);

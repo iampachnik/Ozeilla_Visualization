@@ -14,6 +14,9 @@ public:
 
     HomePosition::Position3D currentPosition() const { return currentPosition_; }
 
+signals:
+    void positionChanged(const HomePosition::Position3D& pos);
+
 private slots:
     void onSetPosition();
     void onResetPosition();
